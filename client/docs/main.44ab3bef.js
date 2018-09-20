@@ -9042,8 +9042,8 @@ var constraints = {
 exports.default = {
   name: 'app',
   created: function created() {
-    console.log('' + 'https://5gcdse5qhd.execute-api.us-east-1.amazonaws.com/dev/');
-    this.apiEndpoint = '' + 'https://5gcdse5qhd.execute-api.us-east-1.amazonaws.com/dev/';
+    console.log('' + 'http://192.168.10.100:3000/');
+    this.apiEndpoint = '' + 'http://192.168.10.100:3000/';
     console.log('created');
     //デバイス情報ゲット
     var item = navigator.mediaDevices.getUserMedia(constraints);
