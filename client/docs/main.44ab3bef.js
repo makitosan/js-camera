@@ -9042,8 +9042,8 @@ var constraints = {
 exports.default = {
   name: 'app',
   created: function created() {
-    console.log('' + 'http://dev.hogehoge.com/api/');
-    this.apiEndpoint = '' + 'http://dev.hogehoge.com/api/';
+    console.log('' + 'https://5gcdse5qhd.execute-api.us-east-1.amazonaws.com/dev/');
+    this.apiEndpoint = '' + 'https://5gcdse5qhd.execute-api.us-east-1.amazonaws.com/dev/';
     console.log('created');
     //デバイス情報ゲット
     var item = navigator.mediaDevices.getUserMedia(constraints);
@@ -9083,8 +9083,12 @@ exports.default = {
     upload: function upload() {
       var canvas = document.getElementById('picture');
       var base64 = canvas.toDataURL('image/png');
-      _axios2.default.post(this.apiEndpoint, {
-        img: base64
+      _axios2.default.post(this.apiEndpoint + 'camera', {
+        img: base64.split(',')[1]
+      }).then(function (res) {
+        console.log(res.data);
+      }).catch(function (err) {
+        console.error(err);
       });
     }
   }

@@ -67,8 +67,12 @@ export default {
       upload: function() {
         let canvas = document.getElementById('picture');
         let base64 = canvas.toDataURL('image/png');
-        axios.post(this.apiEndpoint, {
-          img: base64
+        axios.post(this.apiEndpoint + 'camera', {
+          img: base64.split(',')[1]
+        }).then((res) => {
+          console.log(res.data);
+        }).catch((err) => {
+          console.error(err);
         });
       }
     }
