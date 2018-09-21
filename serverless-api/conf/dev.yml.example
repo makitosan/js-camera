@@ -1,0 +1,2 @@
+# please copy this file to dev/dev.yml and prd/prd.yml
+bucket_name: dummy_bucket_name

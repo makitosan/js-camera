@@ -7,6 +7,9 @@ const bodyParser = require('body-parser');
 const app = express();
 const AWS = require('aws-sdk');
 
+const BUCKET_NAME = process.env.BUCKET_NAME;
+console.log('BUCKET_NAME is ', BUCKET_NAME);
+
 const IS_OFFLINE = process.env.IS_OFFLINE;
 let s3;
 if (IS_OFFLINE === 'true') {
@@ -51,7 +54,7 @@ app.post('/camera', function(req, res){
 
 const putfile = async (buffer, key) => {
   let params = {
-    Bucket: 'arschoolcamera',
+    Bucket: BUCKET_NAME,
     Key: 'images/' + key,
     ACL: 'public-read',
     Body: buffer

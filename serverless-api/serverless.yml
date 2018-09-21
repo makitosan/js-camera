@@ -1,11 +1,16 @@
 service: new-service
 
 custom:
-  bucket: arschoolcamera
+  defaultStage: dev
+  environment:
+    dev: ${file(./conf/dev/dev.yml)}
+    prd: ${file(./conf/prd/prd.yml)}
+  bucket: ${self:custom.environment.${self:provider.stage}.bucket_name}
   s3:
     host: 0.0.0.0
     port: 8000
     directory: /tmp
+
 plugins:
   - serverless-s3-local
   - serverless-offline
@@ -13,7 +18,9 @@ plugins:
 provider:
   name: aws
   runtime: nodejs8.10
-  stage: dev
+  stage: ${opt:stage, self:custom.defaultStage}
+  environment:
+    BUCKET_NAME: ${self:custom.bucket}
   region: us-east-1
   iamRoleStatements:
     - Effect: Allow
