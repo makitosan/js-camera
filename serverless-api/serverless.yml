@@ -2,6 +2,13 @@ service: new-service
 
 custom:
   bucket: arschoolcamera
+  s3:
+    host: 0.0.0.0
+    port: 8000
+    directory: /tmp
+plugins:
+  - serverless-s3-local
+  - serverless-offline
 
 provider:
   name: aws
