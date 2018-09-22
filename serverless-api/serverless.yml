@@ -35,6 +35,7 @@ functions:
     events:
       - http: ANY /
       - http: 'ANY {proxy+}'
+      - http: GET /ping
       - http:
          path: /camera
          method: post

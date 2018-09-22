@@ -34,6 +34,9 @@ app.use(bodyParser.json({ limit:'50mb' }));
 
 console.log('Loading function');
 
+const ping = require('./src/ping');
+app.use('/ping', ping);
+
 app.get('/', function (req, res) {
   console.log('Received: ', req);
   res.send('Hello World!');
